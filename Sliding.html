@@ -1,0 +1,25 @@
+<html>
+	<script>
+		var initTop = -400;var intervalID;
+		function SlideMe(){
+			var myDiv = document.getElementById('slidingDiv');
+			intervalID = setInterval('increaseTop()',250);
+		}
+		function increaseTop(){
+			var myDiv = document.getElementById('slidingDiv');
+			if(initTop == 0){
+			clearInterval(intervalID);
+			return;}
+			else{
+			initTop = initTop + 50;
+			 myDiv.style.top = initTop + "px";
+			}
+			
+		}
+	</script>
+	<body onload="SlideMe()">
+		<div id="slidingDiv" style="width:780px;height:380px;border:1px solid red;top:-400px;position:absolute">
+			This is to test my sliding effect from top
+		</div>
+	</body>
+</html>

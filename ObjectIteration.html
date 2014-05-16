@@ -1,0 +1,57 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<script>
+			var lineItem = [{
+			    id: 1,
+			    ads: [{
+			        id: 1,
+			        creative: 'a creative'
+			    },
+			    {
+			        id: 2,
+			        creative: 'another creative'
+			    }]
+			},
+			{
+			    id: 2,
+			    ads: [{
+			        id: 1,
+			        creative: 'a creative'
+			    },
+			    {
+			        id: 3,
+			        creative: 'a third creative'
+			    }]
+			}];
+
+			var resultLineItemObj = [], resultAdsObj = [];
+			for(var lineItemInfo in lineItem) {				
+				var id, ads,lineItemObj = {};
+				id = lineItem[lineItemInfo].id;
+				lineItemObj["id"] = id;
+				
+				ads = lineItem[lineItemInfo].ads;
+				var adIds = [];
+				for(var adsInfo in ads) {
+					var adId = ads[adsInfo].id, creative = "", adsObj = {};
+					adIds.push(adId);					
+					adsObj["id"] = adId;
+					adsObj["creative"] = ads[adsInfo].creative;	
+					if(!resultAdsObj[adId]) {
+						resultAdsObj.push(adsObj);								
+					}
+				}
+				
+				lineItemObj["ad_ids"] = adIds;
+				resultLineItemObj.push(lineItemObj);
+				
+			}
+			console.log(resultLineItemObj);
+			console.log(resultAdsObj);
+			
+		</script>
+
+	</body>
+</html>

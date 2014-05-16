@@ -1,0 +1,78 @@
+<html>
+	<head>
+		
+	</head>
+	<body oncontextmenu="return false">
+		check how bind works
+		<a id="bCheck" href="javascript:;">check how bind works</a>
+		<textarea cols="50" rows="10" id="test">this is to test</textarea>
+		<script type="text/javascript">
+			var el = document.getElementById('test');
+			el.focus();
+			 if (typeof el.selectionStart === "number") {
+                el.selectionStart = el.selectionEnd = el.value.length;
+            } else if (el.createTextRange !== "undefined") {
+                el.focus();
+                range = el.createTextRange();
+                
+                
+            }
+			var sample = "sample";
+			String.prototype.spacify = function() {
+				return this.split('').join(' ');
+			}
+			Function.prototype.currier = function() {
+				var method = this,
+				args = Array.prototype.slice.call(arguments);
+				return function() {
+					return method.apply(this, args.concat(Array.prototype.slice.call(arguments)));
+				}
+				
+			}
+
+			console.log(sample.spacify());
+			var fObj = {
+				num : 12
+			};
+			var sObj = {
+				num : 14
+			};
+			function multiply(mult) {
+				console.log(this.num * mult);
+				return this.num * mult;
+			}
+
+			Function.prototype.bind = function(obj) {
+				var method = this;
+				
+				return function() {
+					return method.apply(obj, arguments);
+				};
+			}
+			//console.log(multiply.call(fObj, 5));
+			//console.log(multiply.call(sObj, 5));
+ 			var fObjRef = multiply.bind(sObj);
+			document.getElementById('bCheck').onclick = function() {  console.log('here');fObjRef(5); };
+		
+		</script>
+		<script type="text/javascript">
+			function byebye(str1, str2) {
+				return str1.concat('').concat(str2);
+			}
+
+			
+			var priyaBye = byebye.currier('priya currying');			
+			console.log(priyaBye('hello'));			
+
+			function sum() {
+				var tot = 0;
+				args = Array.prototype.slice.call(arguments);
+				for(var i=0; i< args.length; i++) {
+					tot += arguments[i];
+				}
+				return tot;
+			}
+			console.log(sum(5,4));
+		</script>
+	</body>
+</html>

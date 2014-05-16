@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<style>
+			.check {
+				border:1px solid red;
+				*border: 1px solid green;
+				width:250px;
+				margin:5px;
+				padding:5px;
+				
+			}
+			html+body .check {
+				border: 1px solid yellow;
+			}
+			.repeat {
+				  background-image: 
+				    repeating-linear-gradient(
+				      45deg,
+				      yellow,
+				      yellow 10px,
+				      red 10px,
+				      red 20px /* determines size */
+				     
+				    );
+				}
+			.triangle {	
+				width: 5px;
+				border-top: 5px solid red;
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				margin:20px;
+			}
+			#test {
+				border: 1px solid blue;
+			}
+
+			.layer {
+				border: 1px solid red;
+				width: 250px;
+				height:250px;
+				z-index: 9999;
+				//position: absolute;
+				top: 0;
+				left:100px;
+				background-color: #fff;
+			}
+
+			p {color: red;}
+			.container { color: blue;}
+			repeating-linear-gradient(45deg, yellow, yellow 10px, red 10px, red 20px)
+
+				
+		</style>
+	</head>
+	<body>
+		<span>test<span>test1</span></span>
+		<input type="radio" id="check" name="check">Test</input>
+		<input type="radio" id="check1" name="check">Test</input>
+		<input type="radio" id="check2" name="check">Test</input>
+
+		<input type="checkbox" id="check" name="check">Test</input>
+		<input type="checkbox" id="check" name="check">Test</input>
+		<input type="checkbox" id="check" name="check">Test</input>
+
+		<a href="#">check the link behind the layer</a>
+		<p class="check">this is to test the hack </p>
+		<div class="repeat" style="width:100px;height:100px">
+		</div>
+		<div class="triangle">
+		</div>
+		<div class="layer" id="test">
+		</div>
+		<div id="main" class="container">
+		    <p id="foo" class="bar boo">Hello World</p>
+		</div> 
+		<script>
+			var findDuplicatedItems = (function() {
+		    var obj = {}, result = [],
+		        len = 0;
+		    
+		    return {
+		        getDup: function(arrData) {
+		            len = arrData.length;
+		            for(var i = 0; i < len; i++) {
+		                if (obj[arrData[i]]) result.push(arrData[i]);
+		                else obj[arrData[i]] = true;
+		            }
+		            console.log(result);
+		        }
+		    };
+		})();
+
+		var arr = [1, 2, 3, 4, 77, 54, 3, 57, 2, 99, 54];
+		findDuplicatedItems.getDup(arr);
+		</script>
+	</body>
+</html>

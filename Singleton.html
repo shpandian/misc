@@ -1,0 +1,52 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<a href="#" id="anc1">check the event</a>
+		<script type="text/javascript">
+			var employee = (function() {
+				var instance;
+				function init() {
+					function getRandomNumber() {
+						return Math.random();
+					};
+					var privateVar = getRandomNumber();
+					return {
+						randomNumber : getRandomNumber(),
+						number : privateVar
+					};
+				};
+				
+				return {
+					getInstance : function() {
+						if(!instance){
+							instance = init();
+						}
+						return instance;
+					}
+				}
+			})();
+			//var emp11 = new employee(); employee is not a function constructor
+			var emp1 = employee.getInstance();
+			console.log(emp1.randomNumber);
+			var emp2 = employee.getInstance();
+			console.log(emp2.randomNumber);
+
+			var sampleFn = function() {
+				this.checkPpty = 15;
+
+				console.log('function constructor');
+			}
+			var fn1 = new sampleFn();
+			var fn2 = new sampleFn(); // typeof object
+			var fn3 = sampleFn(); // undefined
+			sampleFn.prototype.newProperty = 15000;
+			console.log(fn1.checkPpty);
+			console.log(fn1.newProperty);
+			fn1==fn2 ? console.log('singleton') : console.log('not a songleton');
+		
+
+		</script>
+		
+	</body>
+</html>

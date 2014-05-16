@@ -1,0 +1,32 @@
+<html>
+	<head>
+
+	</head>
+	<body>
+		<div style="width:100px; height:100px; position: absolute; border: 1px solid red" id="drag">
+			this is the prototype for drag and drop!!!!
+		</div>
+		<script type="text/javascript"> 
+			document.getElementById('drag').addEventListener("mousedown", function(e){ dragStart(e);}, false);
+			function dragStart(e) {
+				var event = e || window.event, elem = document.getElementById('drag');
+				elem.style.position="absolute";
+				elem.style.cursor = "all-scroll";				
+				document.onmouseup = dragEnd;
+				document.onmousemove = dragging;
+			}
+			function dragging(e) {
+				var event = e || window.event, elem = document.getElementById('drag');
+				elem.style.position="absolute";
+				elem.style.top =event.clientY+'px';
+				elem.style.left =event.clientX+'px';
+				return false;
+			
+}
+			function dragEnd(e) {
+				 document.onmouseup = null;
+        		document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

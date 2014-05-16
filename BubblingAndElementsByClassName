@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<style>
+				ul#check li {
+					list-style-type: none;
+					display: inline-block;
+					*display: inline;
+					zoom:1;
+				}
+			</style>
+	</head>
+	<body>
+		<div id="outerDiv" style="border:1px solid red;width:100px;height:100px">
+			<div id="innerDiv" style="border:1px solid green;width:50px;height:50px">
+			</div>
+		</div>
+		<ul id="check">
+			<li>one</li>
+			<li>two</li>
+		</ul>
+		<ul id="check1">
+			<li>three</li>
+			<li>four</li>
+		</ul>
+		<input type="text" size="15" style="height:20%;width:50%"/>
+		<script>
+
+			document.getElementById('outerDiv').onclick = function(event) {
+				console.log('outerDiv');
+				console.log(event);
+
+			};
+			function getElementsByClassName(node, classname){
+			    if(node.getElementsByClassName){
+			        return node.getElementsByClassName(classname);
+			    } else { 
+			        var results = new Array();
+			        var elemsOnPage = document.getElementsByTagName("*");
+			        var len = elemsOnPage.length;
+			        var i;
+			        for(i = 0; i < len; i++){
+			            if(elemsOnPage[i].className && elemsOnPage[i].className == classname){
+			                results[results.length] = elemsOnPage[i];
+			     }
+			        }
+			        return results;
+			    }
+			}
+			 
+		</script>
+	</body>
+</html>
+
